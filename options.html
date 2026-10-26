@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>我的简历 · 神奇网申助手</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><div class="brand-mark">申</div><div><div class="brand-title">神奇网申助手</div><div class="brand-subtitle">我的简历资料</div></div></div>
+      <div class="save-state"><span id="saveDot"></span><span id="saveState">所有资料仅保存在本机</span></div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside>
+      <div class="completion-card">
+        <div class="completion-top"><span>资料完整度</span><strong id="completionText">0%</strong></div>
+        <div class="progress-track"><span id="completionBar"></span></div>
+        <p>资料越完整，网申时能自动填写的项目越多。</p>
+      </div>
+      <nav aria-label="简历章节">
+        <a href="#attachments" class="active"><b>01</b><span>导入与头像</span></a>
+        <a href="#personal"><b>02</b><span>基本信息</span></a>
+        <a href="#education"><b>03</b><span>教育经历</span></a>
+        <a href="#work"><b>04</b><span>工作 / 实习经历</span></a>
+        <a href="#projects"><b>05</b><span>项目经历</span></a>
+        <a href="#schoolExperiences"><b>06</b><span>在校经历</span></a>
+        <a href="#awards"><b>07</b><span>获奖经历</span></a>
+        <a href="#preference"><b>08</b><span>求职意向</span></a>
+        <a href="#ability"><b>09</b><span>能力介绍</span></a>
+      </nav>
+      <div class="privacy-note"><strong>隐私说明</strong><p>信息使用浏览器本地存储，不会发送到任何服务器。请仅在自己的设备上使用。</p></div>
+    </aside>
+
+    <form id="resumeForm" autocomplete="off">
+      <section id="attachments" class="form-section">
+        <div class="section-heading"><div><span>01</span><div><h2>导入简历与头像</h2><p>先导入已有简历，自动预填写后再核对资料</p></div></div><em>第一步</em></div>
+        <div class="upload-grid">
+          <div class="upload-card">
+            <div class="upload-icon document-icon">PDF</div>
+            <div class="upload-copy"><strong>导入简历并预填写</strong><span id="resumeFileStatus">尚未选择文件</span><small id="resumeImportStatus">支持 PDF、DOCX、TXT，本地解析后只补充空白资料</small></div>
+            <label class="upload-button">选择并导入<input id="resumeFile" type="file" accept=".pdf,.doc,.docx,.txt,.md,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,text/plain,text/markdown"></label>
+            <button id="removeResumeFile" class="remove-file" type="button" hidden>移除</button>
+          </div>
+          <div class="upload-card">
+            <div id="avatarPreview" class="upload-icon avatar-icon">头像</div>
+            <div class="upload-copy"><strong>头像图片</strong><span id="avatarStatus">尚未选择图片</span><small>支持 JPG、PNG、WebP，建议使用证件照</small></div>
+            <label class="upload-button">选择图片<input id="avatarFile" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp"></label>
+            <button id="removeAvatarFile" class="remove-file" type="button" hidden>移除</button>
+          </div>
+        </div>
+        <p class="attachment-hint">文件只在浏览器本地解析和保存。部分网站使用加密上传组件，可能仍需手动选择文件。</p>
+      </section>
+
+      <section id="personal" class="form-section">
+        <div class="section-heading"><div><span>02</span><div><h2>基本信息</h2><p>用于填写联系方式和个人资料</p></div></div><em>常用</em></div>
+        <div class="field-grid">
+          <div class="field"><label for="fullName">姓名 <i>*</i></label><input id="fullName" data-path="personal.fullName" placeholder="请输入真实姓名"></div>
+          <div class="field"><label for="phone">手机号码 <i>*</i></label><input id="phone" data-path="personal.phone" inputmode="tel" placeholder="例如：138 0000 0000"></div>
+          <div class="field"><label for="email">电子邮箱 <i>*</i></label><input id="email" data-path="personal.email" type="email" placeholder="name@example.com"></div>
+          <div class="field"><label for="gender">性别</label><select id="gender" data-path="personal.gender"><option value="">请选择</option><option>男</option><option>女</option><option>其他</option></select></div>
+          <div class="field"><label for="lastName">姓（英文表单）</label><input id="lastName" data-path="personal.lastName" placeholder="例如：Zhang"></div>
+          <div class="field"><label for="firstName">名（英文表单）</label><input id="firstName" data-path="personal.firstName" placeholder="例如：San"></div>
+          <div class="field"><label for="birthday">出生日期</label><input id="birthday" data-path="personal.birthday" type="date"></div>
+          <div class="field"><label for="height">身高</label><input id="height" data-path="personal.height" inputmode="decimal" placeholder="例如：175cm 或 175"></div>
+          <div class="field"><label for="weight">体重</label><input id="weight" data-path="personal.weight" inputmode="decimal" placeholder="例如：65kg 或 65"></div>
+          <div class="field"><label for="location">现居城市</label><input id="location" data-path="personal.location" placeholder="例如：上海市"></div>
+          <div class="field"><label for="hometown">籍贯 / 户籍</label><input id="hometown" data-path="personal.hometown" placeholder="例如：浙江杭州"></div>
+          <div class="field"><label for="yearsOfExperience">工作年限</label>
+            <select id="yearsOfExperience" data-path="personal.yearsOfExperience">
+              <option value="">请选择</option>
+              <option value="应届生">应届生 / 应届毕业生</option>
+              <option value="1年以内">1年以内</option>
+              <option value="1-3年">1-3年</option>
+              <option value="3-5年">3-5年</option>
+              <option value="5-10年">5-10年</option>
+              <option value="10年以上">10年以上</option>
+            </select>
+          </div>
+
+          <div class="field"><label for="recentCompany">最近公司</label><input id="recentCompany" data-path="personal.recentCompany" placeholder="例如：钱有限公司"></div>
+          <div class="field"><label for="nationality">国籍</label><input id="nationality" data-path="personal.nationality" placeholder="例如：中国"></div>
+          <div class="field"><label for="ethnicity">民族</label><input id="ethnicity" data-path="personal.ethnicity" placeholder="例如：汉族"></div>
+          <div class="field"><label for="politicalStatus">政治面貌</label><select id="politicalStatus" data-path="personal.politicalStatus"><option value="">请选择</option><option>中共党员</option><option>中共预备党员</option><option>共青团员</option><option>民主党派</option><option>无党派人士</option><option>群众</option><option>其他</option></select></div>
+          <div class="field"><label for="religion">宗教信仰</label><select id="religion" data-path="personal.religion"><option value="">请选择</option><option>无宗教信仰</option><option>佛教</option><option>道教</option><option>伊斯兰教</option><option>基督教</option><option>天主教</option><option>其他</option></select></div>
+          <div class="field"><label for="maritalStatus">婚姻状况</label><select id="maritalStatus" data-path="personal.maritalStatus"><option value="">请选择</option><option>未婚</option><option>已婚</option><option>其他</option></select></div>
+          <div class="field span-2"><label for="address">详细地址</label><input id="address" data-path="personal.address" placeholder="按需填写，非必填"></div>
+          <div class="field"><label for="wechat">微信号</label><input id="wechat" data-path="personal.wechat"></div>
+          <div class="field"><label for="qq">QQ</label><input id="qq" data-path="personal.qq" inputmode="numeric"></div>
+          <div class="field"><label for="website">个人主页 / 作品集</label><input id="website" data-path="personal.website" type="url" placeholder="https://"></div>
+          <div class="field"><label for="idNumber">证件号码</label><input id="idNumber" data-path="personal.idNumber" placeholder="敏感信息，请谨慎保存"></div>
+        </div>
+        <div class="subsection-heading"><div><strong>家庭成员</strong><span>可保存多位家庭成员或主要社会关系</span></div><button class="add-entry" type="button" data-add="family">＋ 新增家庭成员</button></div>
+        <div id="familyList" class="repeatable-list family-list"></div>
+      </section>
+
+      <section id="education" class="form-section">
+        <div class="section-heading"><div><span>03</span><div><h2>教育经历</h2><p>可添加多段，自动填写时按页面顺序对应</p></div></div><button class="add-entry" type="button" data-add="education">＋ 新增教育经历</button></div>
+        <div id="educationList" class="repeatable-list"></div>
+      </section>
+
+      <section id="work" class="form-section">
+        <div class="section-heading"><div><span>04</span><div><h2>工作 / 实习经历</h2><p>正式工作和实习统一保存，请勾选是否为实习以便精准匹配</p></div></div><button class="add-entry" type="button" data-add="work">＋ 新增工作或实习</button></div>
+        <div id="workList" class="repeatable-list"></div>
+      </section>
+
+      <section id="projects" class="form-section">
+        <div class="section-heading"><div><span>05</span><div><h2>项目经历</h2><p>可添加多段，建议按重要程度排序</p></div></div><button class="add-entry" type="button" data-add="projects">＋ 新增项目经历</button></div>
+        <div id="projectsList" class="repeatable-list"></div>
+      </section>
+
+      <section id="schoolExperiences" class="form-section">
+        <div class="section-heading"><div><span>06</span><div><h2>在校经历</h2><p>填写社团、学生会或实践活动。若网申无此模块，会自动并入项目经历</p></div></div><button class="add-entry" type="button" data-add="schoolExperiences">＋ 新增在校经历</button></div>
+        <div id="schoolExperiencesList" class="repeatable-list"></div>
+      </section>
+
+      <section id="awards" class="form-section">
+        <div class="section-heading"><div><span>07</span><div><h2>获奖经历</h2><p>可添加多项奖项与荣誉</p></div></div><button class="add-entry" type="button" data-add="awards">＋ 新增获奖经历</button></div>
+        <div id="awardsList" class="repeatable-list"></div>
+      </section>
+
+      <section id="preference" class="form-section">
+        <div class="section-heading"><div><span>08</span><div><h2>求职意向</h2><p>填写目标岗位和期望条件</p></div></div></div>
+        <div class="field-grid">
+          <div class="field"><label for="expectedPosition">期望职位</label><input id="expectedPosition" data-path="preference.expectedPosition"></div>
+          <div class="field"><label for="expectedCity">期望城市</label><input id="expectedCity" data-path="preference.expectedCity" placeholder="例如：北京、上海"></div>
+          <div class="field"><label for="currentSalary">当前薪资</label><input id="currentSalary" data-path="preference.currentSalary" placeholder="例如：15K / 面议"></div>
+          <div class="field"><label for="expectedSalary">期望薪资</label><input id="expectedSalary" data-path="preference.expectedSalary" placeholder="例如：20-25K"></div>
+          <div class="field"><label for="availableDate">到岗时间</label><input id="availableDate" data-path="preference.availableDate" placeholder="例如：两周内 / 2026-08-01"></div>
+        </div>
+      </section>
+
+      <section id="ability" class="form-section">
+        <div class="section-heading"><div><span>09</span><div><h2>能力介绍</h2><p>让系统填写自我介绍和技能字段</p></div></div></div>
+        <div class="field-grid one-column">
+          <div class="field"><label for="skills">技能标签</label><input id="skills" data-path="skills" placeholder="用逗号分隔，例如：JavaScript, React, SQL"><span class="hint">中英文逗号均可，保存时会自动整理。</span></div>
+          <div class="field"><label for="hobbies">兴趣爱好</label><input id="hobbies" data-path="hobbies" placeholder="用逗号分隔，例如：阅读，跑步，摄影"><span class="hint">将按“阅读、跑步、摄影”的形式自动填写。</span></div>
+          <div class="template-picker">
+            <div><strong>自我评价模板</strong><span>选择后可继续按个人经历修改</span></div>
+            <div class="template-buttons">
+              <button type="button" data-self-template="general">通用稳健</button>
+              <button type="button" data-self-template="tech">技术研发</button>
+              <button type="button" data-self-template="product">产品运营</button>
+              <button type="button" data-self-template="graduate">应届生</button>
+            </div>
+          </div>
+          <div class="field"><label for="selfIntroduction">个人简介 / 自我评价</label><textarea id="selfIntroduction" data-path="selfIntroduction" maxlength="2000" placeholder="简要介绍你的优势、经验和职业目标"></textarea><span class="counter"><b id="introCount">0</b>/2000</span></div>
+        </div>
+      </section>
+
+      <div class="form-actions"><button type="button" id="clearButton" class="button danger-button">清空资料</button><button type="submit" class="button button-primary">保存简历资料</button></div>
+    </form>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="core.js"></script>
+  <script src="resume-parser.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

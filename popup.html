@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>神奇网申助手</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="popup.css"></head>
+<body>
+  <main class="popup-shell">
+    <header>
+      <div class="brand"><div class="brand-mark">超</div><div><div class="brand-title">神奇网申助手</div><div class="brand-subtitle">网申信息自动填写助手</div></div></div>
+      <button id="settings" class="icon-button" title="编辑简历" aria-label="编辑简历">⚙</button>
+    </header>
+
+    <section class="profile-card">
+      <div class="profile-row"><div><div class="eyebrow">我的简历</div><div id="profileName" class="profile-name">还未填写简历</div></div><button id="editResume" class="text-button">编辑</button></div>
+      <div class="progress-track"><span id="progressBar"></span></div>
+      <div class="progress-copy"><span>资料完整度</span><strong id="progressText">0%</strong></div>
+    </section>
+
+    <section id="pageCard" class="page-card scanning">
+      <div class="status-icon" id="statusIcon">⌁</div>
+      <div><div id="pageStatus" class="page-status">正在检测当前页面…</div><div id="pageDetail" class="page-detail">识别可填写的简历字段</div></div>
+    </section>
+
+    <label class="switch-row"><span><strong>保留已有内容</strong><small>跳过页面中已经填写的字段</small></span><input id="preserveExisting" type="checkbox" checked><i></i></label>
+
+    <button id="startFill" class="button button-primary start-button" disabled><span>开始检测并填写</span><b>→</b></button>
+    <div id="result" class="result" hidden></div>
+    <p class="privacy">🔒 简历仅保存在你的浏览器中，不会上传</p>
+  </main>
+  <script src="core.js"></script><script src="popup.js"></script>
+</body>
+</html>
